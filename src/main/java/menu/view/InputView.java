@@ -5,6 +5,7 @@ import static menu.constant.InputConstant.*;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import menu.model.CoachNames;
 import menu.model.DislikeMenus;
 import menu.util.Parser;
@@ -30,11 +31,10 @@ public class InputView {
             Validator.validateDislikeMenu(disLikeMenu);
         }
         Validator.validateDislikeMenus(dislikeMenus);
-        List<String> replacedDislikeMenus = new ArrayList<>();
-        for (String dislikeMenu : dislikeMenus) {
-            replacedDislikeMenus.add(Parser.replaceBlankToUnderBar(dislikeMenu));
-        }
-        return DislikeMenus.from(replacedDislikeMenus);
+        List<String> parsedDislikeMenus = dislikeMenus.stream()
+                .map(Parser::replaceBlankToUnderBar)
+                .collect(Collectors.toList());
+        return DislikeMenus.from(parsedDislikeMenus);
     }
 
     private static String input() {
