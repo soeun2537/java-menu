@@ -13,7 +13,7 @@ public class Validator {
 
     public static void validateCoachName(String input) {
         validateNotNull(input);
-        validateCharacter(input);
+        validateCharacter(input, NAME_PATTERN.getContent());
         validateLength(input, 2, 4);
     }
 
@@ -23,7 +23,7 @@ public class Validator {
     }
 
     public static void validateDislikeMenu(String input) {
-        validateCharacter(input);
+        validateCharacter(input, MENU_PATTERN.getContent());
     }
 
     public static void validateDislikeMenus(List<String> inputs) {
@@ -37,8 +37,8 @@ public class Validator {
         }
     }
 
-    private static void validateCharacter(String input) {
-        if (!input.matches(NICKNAME_PATTERN.getContent())) {
+    private static void validateCharacter(String input, String pattern) {
+        if (!input.matches(pattern)) {
             throw new IllegalArgumentException(INVALID_FORMAT.getMessage());
         }
     }
