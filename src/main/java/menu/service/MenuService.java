@@ -11,11 +11,11 @@ import menu.model.Recommendation;
 public class MenuService {
 
     public List<Recommendation> recommend(Information information) {
-        List<Recommendation> everyRecommendation = initializeRecommendation(information);
+        List<Recommendation> recommendations = initializeRecommendation(information);
         for (int day = 0; day < 5; day++) {
-            recommendOneDay(information, everyRecommendation);
+            recommendOneDay(information, recommendations);
         }
-        return everyRecommendation;
+        return recommendations;
     }
 
     private static List<Recommendation> initializeRecommendation(Information information) {

@@ -27,8 +27,13 @@ public class OutputView {
         println(MENU_RECOMMENDATION_GUIDANCE.getMessage());
         println(MENU_RECOMMENDATION_DAY_GUIDANCE.getMessage());
         println(MENU_RECOMMENDATION_CATEGORY_GUIDANCE.getMessage());
-        for (Recommendation recommendation : everyRecommendation) {
-            println(MENU_RECOMMENDATION.getMessage(recommendation.getName(),
+        printRecommendations(everyRecommendation);
+    }
+
+    private static void printRecommendations(List<Recommendation> recommendations) {
+        for (Recommendation recommendation : recommendations) {
+            println(MENU_RECOMMENDATION.getMessage(
+                    recommendation.getName(),
                     Parser.replaceUnderBarToBlank(recommendation.getRecommendation().get(0)),
                     Parser.replaceUnderBarToBlank(recommendation.getRecommendation().get(1)),
                     Parser.replaceUnderBarToBlank(recommendation.getRecommendation().get(2)),

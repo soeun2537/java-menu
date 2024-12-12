@@ -26,9 +26,8 @@ public class MenuController {
             everyDislikeMenus.add(returnDislikeMenus(coachName));
         }
 
-        List<Recommendation> everyRecommendation = menuService.recommend(
-                Information.from(coachNames, everyDislikeMenus));
-        OutputView.printMenuRecommendation(everyRecommendation);
+        List<Recommendation> recommendations = menuService.recommend(Information.from(coachNames, everyDislikeMenus));
+        OutputView.printMenuRecommendation(recommendations);
         OutputView.printEndGuidance();
     }
 
